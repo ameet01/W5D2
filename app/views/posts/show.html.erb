@@ -14,9 +14,11 @@
 <% @post.comments_by_parent_id[nil].each do |comment| %>
   <div style='width: 400px; margin: auto; text-align: left;'>
   <span>-<span style='font-weight: bold;'><%= link_to comment.author.username, comment_url(comment)%></span>:  <%= comment.body %>
-  <% comment.child_comments.each do |com| %>
-    <li style='margin-left: 20px;'><%= com.author.username %>:  <%= com.body %></li>
-  <% end %>
+    <li>
+       <%= render("comments/comment",
+                  comment: comment,
+                  comments_by_parent: @post.comments_by_parent_id) %>
+     </li>
   </span>
 </div>
 
