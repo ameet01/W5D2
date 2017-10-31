@@ -1,11 +1,12 @@
-<br>
-<h1 style='font-weight: bold; font-size: 35px;'>Subreddits:</h1>
+
+<h1 style='font-weight: bold; font-size: 40px;'>Subreddits:</h1>
 
 
 <% @subs.each do |sub| %>
-  <%= link_to sub.title, sub_url(sub) %>
+  <span style='font-size: 30px;'><%= link_to sub.title, sub_url(sub) %></span>
   <br>
   <%= sub.description %>
+  <br>
   <br>
   <br>
 <% end %>

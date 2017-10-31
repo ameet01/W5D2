@@ -1,7 +1,7 @@
 <h1 style='font-size: 30px;'>New Sub</h1>
 
 <form action="<%= subs_url %>" method="POST">
-  <input type="hidden" name="authenticity_token" value=" <%=form_authenticity_token %>">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
 
   <label>Title
     <input type="text" name="sub[title]">

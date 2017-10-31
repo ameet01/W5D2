@@ -1,7 +1,7 @@
 
 
-<h1><%= @sub.title %></h1>
-<h3 style='font-weight: 400'>Description: <%= @sub.description %></h3>
+<h1 style='font-size: 40px;'><%= @sub.title %></h1>
+<h3 style='font-weight: 400; margin-top: -10px;'><%= @sub.description %></h3>
 
 
 <%= link_to 'Add Post', new_post_url %>
@@ -9,13 +9,22 @@
 <br>
 <br>
 <br>
-<h3>Posts:</h3>
-<% @sub.posts.each do |post| %>
-  <%= link_to post.title, post_url(post) %><br>
-  <%= post.url %><br>
-  <%= post.content %><br>
-  <% if current_user == post.author %>
-    <%= button_to 'Edit Post', edit_post_url, method: :get  %>
+<h2>Posts:</h2>
+
+<section style='margin: auto; width: 400px; text-align: left;'>
+  <% @sub.posts.each do |post| %>
+    <a id="upvote" href="#"><span></span></a>
+        <br>
+    <a id="downvote" href="#"><span></span></a>
+    <span style='font-size: 20px;'><%= link_to post.title, post_url(post) %></span>
+    <span style='color: gray; font-size: 12px;'>(<%= post.url %>)</span><br>
+    <span style='color: gray; font-size: 12px;'><%= time_ago_in_words(post.created_at) %> ago by <%= link_to post.author.username, user_url(post.author) %></span>
+
+    <br>
+
+    <spans style='font-size: 13px;'><%= post.content.slice(0, 50) %>...<br></span>
+    <% if current_user == post.author %>
+      <%= button_to 'Edit Post', edit_post_url, method: :get  %>
+    <% end %>
   <% end %>
-  <br>
-<% end %>
+</section>

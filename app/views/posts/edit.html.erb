@@ -1,7 +1,7 @@
 <h1>Edit Post</h1>
 
 <form action="<%= post_url(@post) %>" method="POST">
-  <input type="hidden" name="authenticity_token" value=" <%=form_authenticity_token %>">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH">
 
   <label>Title

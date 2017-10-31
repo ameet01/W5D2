@@ -9,7 +9,11 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
 
     if @comment.save
-      redirect_to post_url(@comment.post_id)
+      if @comment.parent_comment_id == nil
+        redirect_to post_url(@comment.post_id)
+      else
+        redirect_to comment_url(@comment.parent_comment_id)
+      end
     else
       flash[:errors] = @comment.errors.full_messages
       render :new
