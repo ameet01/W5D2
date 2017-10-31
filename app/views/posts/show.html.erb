@@ -21,14 +21,21 @@
 <% end %>
 
 
-<br><br><br>
+<br>
 
 <h3>Comments:</h3>
 
 
-<% @post.comments.each do |comment| %>
+<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+  <div style='border: 1px solid black; width: 400px; margin: auto;'>
+    <span>---<%= comment.author.username %>:  <%= comment.body %>
+      <% @post.comments.where(parent_comment_id: comment.id).each do |com| %>
+         <li><%= com.author.username %>:  <%= com.body %></li>
+      <% end %>
+    </span>
+    <%= link_to 'Show', comment_url(comment)%>
+  </div>
 
-  <li><%= comment.author.username %>:  <%= comment.body %></li>
 <% end %>
 
 
