@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :posts,
   inverse_of: :author
 
+  has_many :comments,
+  inverse_of: :author
+
   after_initialize :ensure_session_token
 
   def ensure_session_token

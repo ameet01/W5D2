@@ -1,3 +1,5 @@
+
+
 <h1><%= @post.title %></h1>
 
 
@@ -12,3 +14,23 @@
    <%= sub.description %>
  <% end %>
 <br>
+<br>
+
+<% if current_user == @post.author %>
+  <%= button_to 'Edit Post', edit_post_url, method: :get  %>
+<% end %>
+
+
+<br><br><br>
+
+<h3>Comments:</h3>
+
+
+<% @post.comments.each do |comment| %>
+
+  <li><%= comment.author.username %>:  <%= comment.body %></li>
+<% end %>
+
+
+<br><br><br>
+<%= link_to 'Add Comment', new_post_comment_url(@post) %>

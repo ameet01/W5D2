@@ -1,11 +1,21 @@
-Title: <%= @sub.title %>
-<br>
-Description: <%= @sub.description %>
 
-<br><br><br>
+
+<h1><%= @sub.title %></h1>
+<h3 style='font-weight: 400'>Description: <%= @sub.description %></h3>
+
+
+<%= link_to 'Add Post', new_post_url %>
+
+<br>
+<br>
+<br>
 <h1>Posts:</h1>
 <% @sub.posts.each do |post| %>
   <%= link_to post.title, post_url(post) %><br>
   <%= post.url %><br>
-  <%= post.content %><br><br>
+  <%= post.content %><br>
+  <% if current_user == post.author %>
+    <%= button_to 'Edit Post', edit_post_url, method: :get  %>
+  <% end %>
+  <br>
 <% end %>

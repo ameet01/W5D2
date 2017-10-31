@@ -6,20 +6,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
   </head>
-  <% if flash[:errors] %>
-    <%= flash[:errors] %>
-  <% end %>
 
-  <% if current_user %>
-    <%= current_user.username %>
-    <%= button_to 'Sign Out', session_url, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign In', new_session_url %>
-    <%= link_to 'Sign Up', new_user_url %>
-  <% end %>
 
-  <body>
+
+  <body style='margin: auto; text-align: center; font-family: Raleway'>
+    <a href="/subs"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Reddit_logo_and_wordmark.svg/1280px-Reddit_logo_and_wordmark.svg.png" alt="" style='width: 400px;'></a>
+    <br><br><br>
+    <% if flash[:errors] %>
+      <%= flash[:errors] %>
+    <% end %>
+
+    <% if current_user %>
+      <%= current_user.username %>
+      <%= button_to 'Sign Out', session_url, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign In', new_session_url %>
+      <%= link_to 'Sign Up', new_user_url %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

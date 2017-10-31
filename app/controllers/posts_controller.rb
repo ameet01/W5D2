@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      redirect_to post_url(@post)
+      redirect_to subs_url
     else
       flash[:errors] = @post.errors.full_message
     end

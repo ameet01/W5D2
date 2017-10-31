@@ -7,20 +7,21 @@
   <label>Title
     <input type="text" value="<%= @post.title %>" name="post[title]">
   </label>
-
+  <br>
   <label>Content
     <input type="text" value="<%= @post.content %>" name="post[content]">
   </label>
-
+  <br>
   <label>URL
     <input type="text" value="<%= @post.url %>" name="post[url]">
   </label>
-
-  <label>Subs</label>
+  <br>
+    <br>
+  <label style='font-size: 20px; text-decoration: underline;'>Subs:</label>
   <input type="hidden" name="post[sub_ids][]" value="">
-
+  <br>
   <% Sub.all.each do |sub| %>
-    <label><%= sub.name %>
+    <label><%= sub.title %>
       <input
         type="checkbox"
         value="<%= sub.id %>"
@@ -28,6 +29,7 @@
         <%= "checked" if @post.sub_ids.include?(sub.id) %>
       />
     </label>
+      <br>
   <% end %>
 
   <input type="submit" value="Edit Post!">

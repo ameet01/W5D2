@@ -1,3 +1,7 @@
+<br>
+<h1 style='font-weight: bold; font-size: 35px;'>Subreddits:</h1>
+
+
 <% @subs.each do |sub| %>
   <%= link_to sub.title, sub_url(sub) %>
   <br>
@@ -5,3 +9,8 @@
   <br>
   <br>
 <% end %>
+
+
+
+<br>
+<%= button_to 'Add Post', new_post_url, method: :get %>
