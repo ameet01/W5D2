@@ -1,2 +1,11 @@
-<h1>Subs#show</h1>
-<p>Find me in app/views/subs/show.html.erb</p>
+Title: <%= @sub.title %>
+<br>
+Description: <%= @sub.description %>
+
+<br><br><br>
+<h1>Posts:</h1>
+<% @sub.posts.each do |post| %>
+  <%= link_to post.title, post_url(post) %><br>
+  <%= post.url %><br>
+  <%= post.content %><br><br>
+<% end %>

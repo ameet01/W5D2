@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    render :new
   end
 
   def create
@@ -14,7 +13,6 @@ class PostsController < ApplicationController
       redirect_to post_url(@post)
     else
       flash[:errors] = @post.errors.full_message
-      render :new
     end
   end
 

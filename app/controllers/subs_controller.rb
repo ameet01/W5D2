@@ -1,10 +1,9 @@
 class SubsController < ApplicationController
   before_action :require_logged_in, except: [:index, :show]
-  before_action :require_moderator_edit, except: [:edit, :update]
+  before_action :require_moderator_edit, only: [:edit, :update]
 
   def new
     @sub = Sub.new
-    render :new
   end
 
   def create
@@ -30,7 +29,8 @@ class SubsController < ApplicationController
   end
 
   def index
-    @sub = Sub.all
+    @subs = Sub.all
+    render :index
   end
 
   def show
