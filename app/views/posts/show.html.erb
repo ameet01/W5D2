@@ -3,7 +3,7 @@
 <%= button_to 'Edit Post', edit_post_url, method: :get  %>
 <% end %>
 
-<section style="width: 350px; margin: auto; text-align: left;">
+<section style="width: 400px; margin: auto; text-align: left;">
   <h1 style='font-size: 35px; text-decoration: underline;'><%= @post.title %></h1>
   <p style='margin-top: -25px;'><%= @post.url %></p>
   <li style='font-size: 20px;'><%= @post.content %></li>
@@ -11,12 +11,11 @@
 <br>
 
 <h3>Comments:</h3>
-<% @all_comments = @post.comments %>
-<% @all_comments.where(parent_comment_id: nil).each do |comment| %>
-<div style='width: 350px; margin: auto; text-align: left;'>
+<% @post.comments_by_parent_id[nil].each do |comment| %>
+  <div style='width: 400px; margin: auto; text-align: left;'>
   <span>-<span style='font-weight: bold;'><%= link_to comment.author.username, comment_url(comment)%></span>:  <%= comment.body %>
   <% comment.child_comments.each do |com| %>
-  <li style='margin-left: 20px;'><%= com.author.username %>:  <%= com.body %></li>
+    <li style='margin-left: 20px;'><%= com.author.username %>:  <%= com.body %></li>
   <% end %>
   </span>
 </div>
@@ -25,7 +24,7 @@
 <br>
 <%= link_to 'Add Comment', new_post_comment_url(@post) %>
 <br><br>
-<section style="width: 350px; margin: auto; text-align: left; font-size: 13px;">
+<section style="width: 400px; margin: auto; text-align: left; font-size: 13px;">
   <h3>Subs:</h3>
   <% @post.subs.each do |sub| %>
   <li><%= sub.title %></li>

@@ -14,4 +14,14 @@ class Post < ApplicationRecord
 
   has_many :post_subs, dependent: :destroy, inverse_of: :post
   has_many :subs, through: :post_subs, source: :sub
+
+  def comments_by_parent_id
+    hash = Hash.new { |hash, key| hash[key] = [] }
+
+    self.comments.includes(:author).each do |comment|
+      hash[comment.parent_comment_id] << comment
+    end
+
+    hash
+  end
 end
