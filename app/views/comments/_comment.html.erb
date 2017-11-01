@@ -4,7 +4,7 @@
 
 <ul style='list-style: none;'>
   <% comments_by_parent[comment.id].each do |child_comment| %>
-    <li><%= render("comments/comment",
+    <li style='border: 1px solid black; padding-left: 10px; padding-top: 5px;'><%= render("comments/comment",
             comment: child_comment,
             comments_by_parent: comments_by_parent) %></li>
   <% end %>
