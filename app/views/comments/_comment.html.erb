@@ -1,10 +1,11 @@
-<p>
-  <%= link_to comment.body, comment_url(comment.id) %>
-</p>
+<span style='padding: 15px 0;'>
+  <%= comment.author.username %>: <%= link_to comment.body, comment_url(comment.id) %>
+</span>
 
-
+<ul style='list-style: none;'>
   <% comments_by_parent[comment.id].each do |child_comment| %>
     <li><%= render("comments/comment",
             comment: child_comment,
             comments_by_parent: comments_by_parent) %></li>
   <% end %>
+</ul>

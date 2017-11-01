@@ -11,18 +11,15 @@
 <br>
 
 <h3>Comments:</h3>
+
 <% @post.comments_by_parent_id[nil].each do |comment| %>
-  <div style='width: 400px; margin: auto; text-align: left;'>
-  <span>-<span style='font-weight: bold;'><%= link_to comment.author.username, comment_url(comment)%></span>:  <%= comment.body %>
-    <li>
+    <li style='width: 400px; margin: auto; text-align: left;'>
        <%= render("comments/comment",
                   comment: comment,
                   comments_by_parent: @post.comments_by_parent_id) %>
      </li>
-  </span>
-</div>
-
 <% end %>
+
 <br>
 <%= link_to 'Add Comment', new_post_comment_url(@post) %>
 <br><br>
